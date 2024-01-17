@@ -33,28 +33,18 @@ if (isset($_SESSION['user'])) {
             // Crear el array asociativo con los datos del juego
             $nuevoJuego = ['id_juego' => $id_juego, 'nombre' => $nombre, 'max_jugadores' => $max_jugadores, 'min_jugadores' => $min_jugadores, 'pegi' => $pegi, 'idioma' => $idioma, 'descripcion' => $descripcion];
 
-            // Insertar el nuevo juego y verificar el resultado
-            $insercionExitosa = ModelJuego::insertJuego($pdo, $nuevoJuego);
+           //Insertamos el producto
+//Habria que comprobar que se ha insertado bien
+ModelJuego::insertProducto($pdo,$nuevoJuego);
 
-            if ($insercionExitosa) {
-                // Redirigir a la página principal de juegos
-                header('Location: ../Vista/Mostrar_juegos.php');
-                exit();
-            } else {
-                echo "Error al insertar el juego.";
-                // Puedes redirigir o mostrar un mensaje de error adecuado
-            }
-        } else {
-            echo "Datos del formulario no válidos.";
-            // Puedes redirigir o mostrar un mensaje de error adecuado
-        }
-    } else {
-        echo "Error al conectar a la base de datos.";
-        // Puedes redirigir o mostrar un mensaje de error adecuado
-    }
-} else {
-    // Redirigir a la página de inicio de sesión si no hay una sesión iniciada
-    header('Location: ../view/Login.php');
-    exit();
+//Cargamos la vista principal
+  //Cargamos los datos de los productos
+  $datosJuego = ModelJuego::getJuego($pdo);
+
+  //Cargamos la vista
+  include('..\view/Mostrar_juegos.php');
+
+}
+}
 }
 ?>

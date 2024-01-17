@@ -1,11 +1,11 @@
 <?php
 
-namespace controller;
+namespace JUEGOSMESA\controller;
 
-use model\juego as ModelJuego;
-use model\Utils as ModelUtils;
+use JUEGOSMESA\model\Juego as ModelJuego;
+use JUEGOSMESA\model\Utils as ModelUtils;
 
-include('..\model\juego.php');
+include('..\model\Juego.php');
 include ('..\model\Utils.php');
 
 // Iniciar la sesión solo una vez al principio del script
@@ -19,17 +19,14 @@ if (isset($_SESSION['user'])) {
     // Verificar la conexión exitosa antes de proceder
     if ($pdo) {
         // Cargar los datos de los juegos
-        $datosJuego = ModelJuego::getJuegos($pdo);
+        $datosJuego = ModelJuego::get_juegos($pdo);
 
         // Cargar la vista
-        include('../view/MostrarJuegos.php');
-    } else {
-        echo "Error al conectar a la base de datos.";
-        // Puedes redirigir o mostrar un mensaje de error adecuado
+        include('../view/Mostrar_juegos.php');
     }
 } else {
     // Redirigir a la página de inicio de sesión si no hay una sesión iniciada
-    header('Location: ../view/Login.php');
+    include('Location: ../view/Login.php');
     exit();
 }
 ?>

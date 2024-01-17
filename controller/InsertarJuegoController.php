@@ -39,10 +39,10 @@ if (isset($_SESSION['user'])) {
 
             //Cargamos la vista principal
             //Cargamos los datos de los productos
-            $datosJuego = ModelJuego::get_juegos($pdo);
+            $datos_juegos = ModelJuego::get_juegos($pdo);
 
             //Cargamos la vista
-            include '..\view/Mostrar_juegos.php';
+            include '..\Vista/Mostrar_juegos.php';
         }
     }
 }

@@ -5,8 +5,8 @@ namespace JUEGOSMESA\controller;
 use JUEGOSMESA\model\Juego as ModelJuego;
 use JUEGOSMESA\model\Utils as ModelUtils;
 
-include('..\model\Juego.php');
-include ('..\model\Utils.php');
+include '..\model\Juego.php';
+include '..\model\Utils.php';
 
 // Iniciar la sesión solo una vez al principio del script
 session_start();
@@ -18,15 +18,13 @@ if (isset($_SESSION['user'])) {
 
     // Verificar la conexión exitosa antes de proceder
     if ($pdo) {
-        // Cargar los datos de los juegos
+        // Obtener los datos de los juegos desde la base de datos
         $datos_juegos = ModelJuego::get_juegos($pdo);
 
-        // Cargar la vista
-        include('../view/Mostrar_juegos.php');
-    }
-} else {
-    // Redirigir a la página de inicio de sesión si no hay una sesión iniciada
-    include('../Vista/Login.php');
+        // Cargar la vista y pasar los datos
+        include('../Vista/Mostrar_juegos.php');
+  
     exit();
+}
 }
 ?>

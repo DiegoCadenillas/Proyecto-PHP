@@ -6,7 +6,7 @@ use PDOException;
 
 /**
  * 
- */
+*/
 
 class Juego
 {

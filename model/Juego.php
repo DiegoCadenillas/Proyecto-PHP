@@ -6,7 +6,7 @@ use PDOException;
 
 /**
  * 
-*/
+ */
 
 class Juego
 {
@@ -102,10 +102,68 @@ class Juego
             // Depuración mostrar query
             echo "<p>$query</p></br>";
 
-            
+            $stmt = $pdo->prepare($query);
+
+            // Asociamos a los campos de la query los valores
+            if (isset($juego["nombre"])) {
+                $stmt->bindValue(":nombre", $juego["nombre"]);
+            }
+            if (isset($juego["min_jugadores"])) {
+                $stmt->bindValue(":min_jugadores", $juego["min_jugadores"]);
+            }
+            if (isset($juego["max_jugadores"])) {
+                $stmt->bindValue(":max_jugadores", $juego["max_jugadores"]);
+            }
+            if (isset($juego["pegi"])) {
+                $stmt->bindValue(":pegi", $juego["pegi"]);
+            }
+            if (isset($juego["idioma"])) {
+                $stmt->bindValue(":idioma", $juego["idioma"]);
+            }
+            if (isset($juego["descripcion"])) {
+                $stmt->bindValue(":descripcion", $juego["descripcion"]);
+            }
+            if (isset($juego["id_juego"])) {
+                $stmt->bindValue(":id_juego", $juego["id_juego"]);
+            }
+
+            // Ejecutamos la query
+            $stmt->execute();
+
+            // Sacamos la cantidad de filas afectadas
+            $filas_afectadas = $stmt->rowCount();
+
+            return $filas_afectadas;
         } catch (PDOException $e) {
             print "<p>ERROR: " . $e->getMessage() . ".</p></br>";
             return -1;
+        } finally {
+            $pdo = null;
+        }
+    }
+
+    public static function insert_juego($pdo, $juego)
+    {
+        try {
+            $query = "INSERT INTO juegosmesadb (nombre,min_jugadores,max_jugadores,pegi,idioma,descripcion) VALUES (:nombre,:min_jugadores,:max_jugadores,:pegi,:idioma,:descripcion)";
+
+            $stmt = $pdo->prepare($query);
+
+            // Asignamos los valores de las variables
+            $stmt->bindValue("nombre", $juego["nombre"]);
+            $stmt->bindValue("min_jugadores", $juego["min_jugadores"]);
+            $stmt->bindValue("max_jugadores", $juego["max_jugadores"]);
+            $stmt->bindValue("pegi", $juego["pegi"]);
+            $stmt->bindValue("idioma", $juego["idioma"]);
+            $stmt->bindValue("descripcion", $juego["descripcion"]);
+
+            // Ejecutamos la query
+            $stmt->execute();
+        } catch (PDOException $e) {
+            print "<p>ERROR: " . $e->getMessage() . ".</p></br>";
+            die();
+        } finally {
+            $pdo = null;
         }
     }
 }

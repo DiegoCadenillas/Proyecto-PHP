@@ -26,7 +26,7 @@ if (isset($_SESSION['user'])) {
     }
 } else {
     // Redirigir a la página de inicio de sesión si no hay una sesión iniciada
-    include('../Vista/Login.php');
+    include('../view/Login.php');
     exit();
 }
 ?>

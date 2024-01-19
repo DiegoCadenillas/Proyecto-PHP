@@ -48,6 +48,8 @@
             </thead>
 
             <?php
+            include '../controller/MainController.php';
+
             //Recorremos todos los registros de la base de datos
             for ($i = 0; $i < count($datos_juegos); $i++) {
                 //Para cada registro de BD hay que crear una fila de la tabla

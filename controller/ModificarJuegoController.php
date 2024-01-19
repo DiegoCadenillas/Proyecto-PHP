@@ -48,7 +48,7 @@ if (isset($_SESSION['user'])) {
   $datos_juegos = ModelJuego::get_juegos($pdo);
 
   //Cargamos la vista
-  include('..\Vista/Mostrar_juegos.php');
+  include('../view/Mostrar_juegos.php');
 
 }
     }

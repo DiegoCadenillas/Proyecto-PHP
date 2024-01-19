@@ -22,7 +22,7 @@ if (isset($_SESSION['user'])) {
         $datos_juegos = ModelJuego::get_juegos($pdo);
 
         // Cargar la vista y pasar los datos
-        include('../Vista/Mostrar_juegos.php');
+        include('../view/Mostrar_juegos.php');
   
     exit();
 }

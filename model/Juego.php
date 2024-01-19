@@ -18,7 +18,7 @@ class Juego
     public static function get_juegos($pdo)
     {
         try {
-            $query = "SELECT * FROM juegosmesadb";
+            $query = "SELECT * FROM juegos";
 
             $resultado = $pdo->query($query);
 
@@ -34,7 +34,7 @@ class Juego
     public static function del_juego($pdo, $id_juego)
     {
         try {
-            $query = "DELETE FROM juegosmesadb WHERE id_juego=:id_juego";
+            $query = "DELETE FROM juegos WHERE id_juego=:id_juego";
 
             $stmt = $pdo->prepare($query);
 
@@ -57,7 +57,7 @@ class Juego
     {
         try {
             // Query para modificar
-            $query = "UPDATE juegosmesadb set";
+            $query = "UPDATE juegos set";
 
             // Si no se da nada que modificar devolvemos un error
             if (count($juego) == 0) {
@@ -145,7 +145,7 @@ class Juego
     public static function insert_juego($pdo, $juego)
     {
         try {
-            $query = "INSERT INTO juegosmesadb (nombre,min_jugadores,max_jugadores,pegi,idioma,descripcion) VALUES (:nombre,:min_jugadores,:max_jugadores,:pegi,:idioma,:descripcion)";
+            $query = "INSERT INTO juegos (nombre,min_jugadores,max_jugadores,pegi,idioma,descripcion) VALUES (:nombre,:min_jugadores,:max_jugadores,:pegi,:idioma,:descripcion)";
 
             $stmt = $pdo->prepare($query);
 

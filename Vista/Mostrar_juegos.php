@@ -48,6 +48,7 @@
             </thead>
 
             <?php
+
             //Recorremos todos los registros de la base de datos
             for ($i = 0; $i < count($datos_juegos); $i++) {
                 //Para cada registro de BD hay que crear una fila de la tabla
@@ -59,7 +60,7 @@
                 }
 
                 //Boton para modificar el producto
-                print("<form action=../view/Ver_juegos.php method=POST>\n");
+                print("<form action=../Vista/Ver_juegos.php method=POST>\n");
                 print("<input type='hidden' name='accion' value='Modificar'>");
                 print("<input type=hidden name='id_juegos' value='" . $datos_juegos[$i]['id_juegos'] . "'>");
                 print("<input type=hidden name='nombre' value='" . $datos_juegos[$i]['nombre'] . "'>");

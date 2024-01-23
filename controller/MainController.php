@@ -6,13 +6,13 @@ use JUEGOSMESA\model\Juego as ModelJuego;
 use JUEGOSMESA\model\Utils as ModelUtils;
 
 include('..\model\Juego.php');
-include ('..\model\Utils.php');
+include('..\model\Utils.php');
 
 // Iniciar la sesión solo una vez al principio del script
 session_start();
 
 // Verificar si la sesión está iniciada
-if (isset($_SESSION['user'])) {
+if (true) {
     // Conectar a la base de datos
     $pdo = ModelUtils::conectar();
 
@@ -22,11 +22,9 @@ if (isset($_SESSION['user'])) {
         $datos_juegos = ModelJuego::get_juegos($pdo);
 
         // Cargar la vista
-        include('../view/Mostrar_juegos.php');
     }
 } else {
     // Redirigir a la página de inicio de sesión si no hay una sesión iniciada
     include('../view/Login.php');
     exit();
 }
-?>

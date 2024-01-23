@@ -7,8 +7,8 @@ USE juegosmesasdb;
 CREATE TABLE IF NOT EXISTS Juegos(
 id_juego INT AUTO_INCREMENT PRIMARY KEY,
 nombre VARCHAR(50),
-min_Jug INT,
-max_Jug INT,
+min_jugadores INT,
+max_jugadores INT,
 pegi INT, 
 precio FLOAT,
 idioma VARCHAR(60),

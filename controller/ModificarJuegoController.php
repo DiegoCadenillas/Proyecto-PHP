@@ -6,13 +6,13 @@ use JUEGOSMESA\model\juego as ModelJuego;
 use JUEGOSMESA\model\Utils as ModelUtils;
 
 include('..\model\juego.php');
-include ('..\model\Utils.php');
+include('..\model\Utils.php');
 
 // Iniciar la sesión solo una vez al principio del script
 session_start();
 
 // Verificar si la sesión está iniciada
-if (isset($_SESSION['user'])) {
+if (true) {
     // Conectar a la base de datos
     $pdo = ModelUtils::conectar();
 
@@ -28,7 +28,7 @@ if (isset($_SESSION['user'])) {
         $descripcion = ModelUtils::validar_datos($_POST['descripcion']);
 
         // Verificar si todos los datos son válidos antes de proceder
-        if (is_numeric($idJuego) && $nombre && $descripcion && is_numeric($peso) && is_numeric($precio) && $tamano) {
+        if (is_numeric($id_juego) && $nombre && is_numeric($max_jugadores) && is_numeric($min_jugadores) && is_numeric($pegi) && $idioma && $descripcion  && is_numeric($precio)) {
             // Crear el array asociativo con los datos del juego a modificar
             $juegoModificado = [
                 'id_juego' => $id_juego,
@@ -43,14 +43,12 @@ if (isset($_SESSION['user'])) {
             // Modificar el juego y verificar el resultado
             $modificacionExitosa = ModelJuego::update_juego($pdo, $juegoModificado);
 
-           //Cargamos la vista principal
-  //Cargamos los datos de los productos
-  $datos_juegos = ModelJuego::get_juegos($pdo);
+            //Cargamos la vista principal
+            //Cargamos los datos de los productos
+            $datos_juegos = ModelJuego::get_juegos($pdo);
 
-  //Cargamos la vista
-  include('../view/Mostrar_juegos.php');
-
-}
+            //Cargamos la vista
+            include('../view/Mostrar_juegos.php');
+        }
     }
 }
-?>

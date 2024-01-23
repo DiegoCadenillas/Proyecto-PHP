@@ -41,7 +41,7 @@ CREATE TABLE `juegos` (
 -- Volcado de datos para la tabla `juegos`
 --
 
-INSERT INTO `juegos` (`id_juego`, `nombre`, `min_Jug`, `max_Jug`, `pegi`, `idioma`, `descripcion`) VALUES
+INSERT INTO `juegos` (`id_juego`, `nombre`, `min_Jug`, `max_Jug`, `pegi`, `idioma`, `descripcion`,`precio`) VALUES
 (1, 'Monopoly', 2, 6, 8, 'Español', 'juego sobre gestión inmobiliaria'),
 (2, 'Cluedo', 2, 8, 6, 'Español', 'juego de misterio sobre descubrir quien ha cometido el crimen'),
 (3, 'Risk', 2, 6, 8, 'Español', 'Juego de tablero de estrategia militar'),

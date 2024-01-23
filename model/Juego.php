@@ -15,6 +15,7 @@ class Juego
         // POR HACER
     }
 
+    // Método que devuelve todas las entradas en la tabla juegos
     public static function get_juegos($pdo)
     {
         try {
@@ -23,29 +24,31 @@ class Juego
             $resultado = $pdo->query($query);
 
             $result_set = $resultado->fetchAll();
-        } catch (PDOException $e) {
+        } catch (PDOException $e) { // Manejo posibles excepciones de PDO
             print "<p>ERROR: " . $e->getMessage() . ".</p></br>";
             die();
         }
-
+        // Devuelvo el resultado
         return $result_set;
     }
 
+    // Método que borra la entrada de la tabla juegos con el identificador especificado
     public static function del_juego($pdo, $id_juego)
     {
         try {
+            // Código SQL para buscar y eliminar el juego de identificador id_juego
             $query = "DELETE FROM juegos WHERE id_juego=:id_juego";
-
+            // Preparo la query
             $stmt = $pdo->prepare($query);
-
+            // Reemplazo id_juego en la query por el valor de la variable
             $stmt->bindValue(':id_juego', $id_juego);
-
+            // Ejecuto la query
             $stmt->execute();
-
+            // Para devolver feedback devuelvo la cantidad de filas afectadas
             $filas_afectadas = $stmt->rowCount();
-
+            // Devuelvo la cantidad de filas afectadas. Si es 0, no se encontró, si es mayor que 0 (1) se encontró y eliminó
             return $filas_afectadas;
-        } catch (PDOException $e) {
+        } catch (PDOException $e) { // Manejo posibles excepciones de PDO
             print "<p>ERROR: " . $e->getMessage() . ".</p></br>";
             die();
         } finally {
@@ -53,6 +56,7 @@ class Juego
         }
     }
 
+    // Método para modificar los datos de un juego
     public static function update_juego($pdo, $juego)
     {
         try {
@@ -142,13 +146,14 @@ class Juego
         }
     }
 
+    // Método para crear una nueva entrada en la tabla juegos
     public static function insert_juego($pdo, $juego)
     {
         try {
+            // Query para insertar los datos recibidos como un juego nuevo
             $query = "INSERT INTO juegos (nombre,min_jugadores,max_jugadores,pegi,idioma,descripcion) VALUES (:nombre,:min_jugadores,:max_jugadores,:pegi,:idioma,:descripcion)";
-
+            // Preparo la query
             $stmt = $pdo->prepare($query);
-
             // Asignamos los valores de las variables
             $stmt->bindValue("nombre", $juego["nombre"]);
             $stmt->bindValue("min_jugadores", $juego["min_jugadores"]);
@@ -156,10 +161,9 @@ class Juego
             $stmt->bindValue("pegi", $juego["pegi"]);
             $stmt->bindValue("idioma", $juego["idioma"]);
             $stmt->bindValue("descripcion", $juego["descripcion"]);
-
             // Ejecutamos la query
             $stmt->execute();
-        } catch (PDOException $e) {
+        } catch (PDOException $e) { // Manejo posibles excepciones de PDO
             print "<p>ERROR: " . $e->getMessage() . ".</p></br>";
             die();
         } finally {

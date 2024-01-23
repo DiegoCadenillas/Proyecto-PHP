@@ -1,5 +1,4 @@
 <?php
-
 namespace JUEGOSMESA\controller;
 
 use JUEGOSMESA\model\Juego as ModelJuego;
@@ -12,7 +11,7 @@ include('..\model\Utils.php');
 session_start();
 
 // Verificar si la sesión está iniciada
-if (true) {
+if (isset($_SESSION['user'])) {
     // Conectar a la base de datos
     $pdo = ModelUtils::conectar();
 
@@ -20,11 +19,9 @@ if (true) {
     if ($pdo) {
         // Cargar los datos de los juegos
         $datos_juegos = ModelJuego::get_juegos($pdo);
-
-        // Cargar la vista
     }
 } else {
-    // Redirigir a la página de inicio de sesión si no hay una sesión iniciada
-    include('../view/Login.php');
+    // La sesión no está iniciada, incluir la página de inicio de sesión
+    include('../view/Registrar.php');
     exit();
 }

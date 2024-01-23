@@ -59,14 +59,15 @@
                         print("<td>" . $datos_juegos[$i][$j] . "</td>\n");
                     }
 
-                    //Boton para modificar el producto
+
                     print("<form action=../view/Ver_juegos.php method=POST>\n");
+                    //Boton para modificar el producto
                     print("<input type='hidden' name='accion' value='Modificar'>");
-                    print("<input type=hidden name='id_juegos' value='" . $datos_juegos[$i]['id_juego'] . "'>");
+                    print("<input type=hidden name='id_juego' value='" . $datos_juegos[$i]['id_juego'] . "'>");
                     print("<input type=hidden name='nombre' value='" . $datos_juegos[$i]['nombre'] . "'>");
                     print("<input type=hidden name='descripcion' value='" . $datos_juegos[$i]['descripcion'] . "'>");
-                    print("<input type=hidden name='num_jugadores_min' value='" . $datos_juegos[$i]['min_Jug'] . "'>");
-                    print("<input type=hidden name='num_jugadores_max' value='" . $datos_juegos[$i]['max_Jug'] . "'>");
+                    print("<input type=hidden name='min_jugadores' value='" . $datos_juegos[$i]['min_jugadores'] . "'>");
+                    print("<input type=hidden name='max_jugadores' value='" . $datos_juegos[$i]['max_jugadores'] . "'>");
                     print("<input type=hidden name='pegi' value='" . $datos_juegos[$i]['pegi'] . "'>");
                     print("<input type=hidden name='precio' value='" . $datos_juegos[$i]['precio'] . "'>");
                     print("<input type=hidden name='idioma' value='" . $datos_juegos[$i]['idioma'] . "'>");

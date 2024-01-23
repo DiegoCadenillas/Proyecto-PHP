@@ -10,6 +10,7 @@ nombre VARCHAR(50),
 min_Jug INT,
 max_Jug INT,
 pegi INT, 
+precio float,
 idioma VARCHAR(60),
 descripcion VARCHAR(255) 
 );

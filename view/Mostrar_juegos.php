@@ -41,41 +41,43 @@
                     <th scope="col">NUMERO DE JUGADORES MINIMO</th>
                     <th scope="col">NUMERO DE JUGADORES MAXIMO</th>
                     <th scope="col">PEGI</th>
-                    <th scope="col">num_jugadores_max</th>
                     <th scope="col">IDIOMA</th>
 
                 </tr>
             </thead>
+            <tbody>
+                <?php
+                include '../controller/MainController.php';
 
-            <?php
-            include '../controller/MainController.php';
+                //Recorremos todos los registros de la base de datos
+                for ($i = 0; $i < count($datos_juegos); $i++) {
+                    //Para cada registro de BD hay que crear una fila de la tabla
+                    print("<tr>\n");
+                    //Recorremos todos los datos de este registro
+                    for ($j = 0; $j < count($datos_juegos[$i]) / 2; $j++) {
+                        //Para cada dato del registro creamos una celda
+                        print("<td>" . $datos_juegos[$i][$j] . "</td>\n");
+                    }
 
-            //Recorremos todos los registros de la base de datos
-            for ($i = 0; $i < count($datos_juegos); $i++) {
-                //Para cada registro de BD hay que crear una fila de la tabla
-                print("<tr>\n");
-                //Recorremos todos los datos de este registro
-                for ($j = 0; $j < count($datos_juegos[$i]) / 2; $j++) {
-                    //Para cada dato del registro creamos una celda
-                    print("<td>" . $datos_juegos[$i][$j] . "</td>\n");
+                    //Boton para modificar el producto
+                    print("<form action=../view/Ver_juegos.php method=POST>\n");
+                    print("<input type='hidden' name='accion' value='Modificar'>");
+                    print("<input type=hidden name='id_juegos' value='" . $datos_juegos[$i]['id_juegos'] . "'>");
+                    print("<input type=hidden name='nombre' value='" . $datos_juegos[$i]['nombre'] . "'>");
+                    print("<input type=hidden name='descripcion' value='" . $datos_juegos[$i]['descripcion'] . "'>");
+                    print("<input type=hidden name='num_jugadores_min' value='" . $datos_juegos[$i]['num_jugadores_min'] . "'>");
+                    print("<input type=hidden name='num_jugadores_max' value='" . $datos_juegos[$i]['num_jugadores_max'] . "'>");
+                    print("<input type=hidden name='pegi' value='" . $datos_juegos[$i]['pegi'] . "'>");
+                    print("<input type=hidden name='precio' value='" . $datos_juegos[$i]['precio'] . "'>");
+                    print("<input type=hidden name='idioma' value='" . $datos_juegos[$i]['idioma'] . "'>");
+                    print("<td><button type=submit>Modificar</button></td>");
+                    print("</form>");
                 }
-            }
-            //Boton para modificar el producto
-            print("<form action=../view/Ver_juegos.php method=POST>\n");
-            print("<input type='hidden' name='accion' value='Modificar'>");
-            print("<input type=hidden name='id_juegos' value='" . $datos_juegos[$i]['id_juegos'] . "'>");
-            print("<input type=hidden name='nombre' value='" . $datos_juegos[$i]['nombre'] . "'>");
-            print("<input type=hidden name='descripcion' value='" . $datos_juegos[$i]['descripcion'] . "'>");
-            print("<input type=hidden name='num_jugadores_min' value='" . $datos_juegos[$i]['num_jugadores_min'] . "'>");
-            print("<input type=hidden name='num_jugadores_max' value='" . $datos_juegos[$i]['num_jugadores_max'] . "'>");
-            print("<input type=hidden name='pegi' value='" . $datos_juegos[$i]['pegi'] . "'>");
-            print("<input type=hidden name='precio' value='" . $datos_juegos[$i]['precio'] . "'>");
-            print("<input type=hidden name='idioma' value='" . $datos_juegos[$i]['idioma'] . "'>");
-            print("<td><button type=submit>Modificar</button></td>");
-            print("</form>");
 
 
-            ?>
+                ?>
+        </table>
+        </tbody>
 </body>
 
 </html>

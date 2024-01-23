@@ -75,12 +75,12 @@ class Juego
                 $coma = true;
             }
 
-            if (isset($juego["min_jugadores"])) {
+            if (isset($juego["min_jug"])) {
                 $query = $query . ($coma) ? "," : "" . " min_jugadores=:min_jugadores";
                 $coma = true;
             }
 
-            if (isset($juego["max_jugadores"])) {
+            if (isset($juego["max_jug"])) {
                 $query = $query . ($coma) ? "," : "" . " max_jugadores=:max_jugadores";
                 $coma = true;
             }

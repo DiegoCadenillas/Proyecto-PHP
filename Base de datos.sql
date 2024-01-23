@@ -10,7 +10,7 @@ nombre VARCHAR(50),
 min_Jug INT,
 max_Jug INT,
 pegi INT, 
-precio float,
+precio FLOAT,
 idioma VARCHAR(60),
 descripcion VARCHAR(255) 
 );
@@ -44,6 +44,7 @@ descuento FLOAT,
 FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario),
 FOREIGN KEY (id_producto) REFERENCES Juegos(id_juego) 
 );
+
 CREATE TABLE IF NOT EXISTS Almacén(
 id_almacen INT AUTO_INCREMENT PRIMARY KEY, 
 id_pedido INT NOT NULL,

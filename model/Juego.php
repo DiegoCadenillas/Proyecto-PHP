@@ -114,7 +114,7 @@ class Juego
             }
 
             // Depuración mostrar query
-            echo "<p>$query</p></br>";
+            // echo "<p>$query</p></br>";
 
             $stmt = $pdo->prepare($query);
 

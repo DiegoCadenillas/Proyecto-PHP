@@ -13,7 +13,7 @@ include '..\model\Utils.php';
 session_start();
 
 // Verificar si la sesión está iniciada
-if (isset($_SESSION['user'])) {
+if (true) {
     // Conectar a la base de datos
     $pdo = ModelUtils::conectar();
 

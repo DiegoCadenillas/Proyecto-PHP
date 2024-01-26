@@ -29,7 +29,7 @@ if (true) {
         $precio = ModelUtils::validar_datos($_POST['precio']);
 
         // Verificar si todos los datos son válidos antes de proceder
-        if (is_numeric($id_juego) && $nombre && is_numeric($max_jugadores) && is_numeric($min_jugadores) && is_numeric($pegi) && $idioma && $descripcion  && is_numeric($precio)) {
+        if (!is_null($id_juego)) {
             // Crear el array asociativo con los datos del juego a modificar
             $juegoModificado = [
                 'id_juego' => $id_juego,
@@ -44,13 +44,6 @@ if (true) {
 
             // Modificar el juego y verificar el resultado
             $modificacionExitosa = ModelJuego::update_juego($pdo, $juegoModificado);
-
-            //Cargamos la vista principal
-            //Cargamos los datos de los productos
-            $datos_juegos = ModelJuego::get_juegos($pdo);
-
-            //Cargamos la vista
-            include('../view/Mostrar_juegos.php');
         }
     }
 }

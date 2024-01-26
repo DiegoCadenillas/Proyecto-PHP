@@ -47,8 +47,22 @@
             </thead>
             <tbody>
                 <?php
-                include '../controller/MainController.php';
 
+                if (isset($_POST["controller"])) {
+                    switch ($_POST["controller"]) {
+                        case "eliminar":
+                            include  "../controller/EliminarJuegoController.php";
+                            break;
+                        case "insertar":
+                            include  "../controller/InsertarJuegoController.php";
+                            break;
+                        case "modificar":
+                            include "../controller/ModificarJuegoController.php";
+                            break;
+                    }
+                }
+
+                include '../controller/MainController.php';
                 //Recorremos todos los registros de la base de datos
                 for ($i = 0; $i < count($datos_juegos); $i++) {
                     //Para cada registro de BD hay que crear una fila de la tabla
@@ -62,7 +76,7 @@
 
                     print("<form action=../view/Ver_juegos.php method=POST>\n");
                     //Boton para modificar el producto
-                    print("<input type='hidden' name='accion' value='Modificar'>");
+                    print("<input type='hidden' name='controller' value='modificar'>");
                     print("<input type=hidden name='id_juego' value='" . $datos_juegos[$i]['id_juego'] . "'>");
                     print("<input type=hidden name='nombre' value='" . $datos_juegos[$i]['nombre'] . "'>");
                     print("<input type=hidden name='descripcion' value='" . $datos_juegos[$i]['descripcion'] . "'>");
@@ -74,8 +88,10 @@
                     print("<td><button type=submit>Modificar</button></td>");
                     print("</form>");
                     //Boton para eliminar
-                    print("<form action=../controller/EliminarJuegoController.php method=POST>\n");
+
+                    print("<form action=../view/Mostrar_juegos.php method=POST>\n");
                     print("<input type=hidden name='id_juego' value='" . $datos_juegos[$i]['id_juego'] . "'>");
+                    print("<input type=hidden name='controller' value='eliminar'>");
                     print("<td><button type=submit>Eliminar</button></td>");
                     print("</form>");
 
@@ -87,7 +103,7 @@
         </tbody>
         <!-- Boton para añadir los productos -->
         <form action='../view/Ver_juegos.php' method='POST'>
-            <input type='hidden' name='accion' value='Insertar'>
+            <input type='hidden' name='controller' value='insertar'>
             <button type='submit'>Añadir Producto</button>
         </form>
 </body>

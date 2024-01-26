@@ -38,7 +38,8 @@ if (true) {
                 'min_jugadores' => $min_jugadores,
                 'pegi' => $pegi,
                 'idioma' => $idioma,
-                'descripcion' => $descripcion
+                'descripcion' => $descripcion,
+                'precio' => $precio
             ];
 
             // Modificar el juego y verificar el resultado

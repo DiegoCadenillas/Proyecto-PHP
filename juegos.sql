@@ -24,47 +24,16 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `juegos`
---
-
-CREATE TABLE `juegos` (
-  `id_juego` int(11) NOT NULL,
-  `nombre` varchar(50) DEFAULT NULL,
-  `min_jugadores` int(11) DEFAULT NULL,
-  `max_jugadores` int(11) DEFAULT NULL,
-  `pegi` int(11) DEFAULT NULL,
-  `precio` FLOAT(11) DEFAULT NULL,
-  `idioma` varchar(60) DEFAULT NULL,
-  `descripcion` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
 -- Volcado de datos para la tabla `juegos`
 --
 
-INSERT INTO `juegos` (`id_juego`, `nombre`, `min_Jug`, `max_Jug`, `pegi`, `idioma`, `descripcion`) VALUES
+INSERT INTO `juegos` (`id_juego`, `nombre`, `min_jugadores`, `max_jugadores`, `pegi`, `idioma`, `descripcion`) VALUES
 (1, 'Monopoly', 2, 6, 8, 'Español', 'juego sobre gestión inmobiliaria'),
 (2, 'Cluedo', 2, 8, 6, 'Español', 'juego de misterio sobre descubrir quien ha cometido el crimen'),
 (3, 'Risk', 2, 6, 8, 'Español', 'Juego de tablero de estrategia militar'),
 (4, 'The worlds games', 2, 5, 11, 'Ingles', 'juego de carta sobre geografía');
 
---
--- Índices para tablas volcadas
---
 
---
--- Indices de la tabla `juegos`
---
-ALTER TABLE `juegos`
-  ADD PRIMARY KEY (`id_juego`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `juegos`
---
 ALTER TABLE `juegos`
   MODIFY `id_juego` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;

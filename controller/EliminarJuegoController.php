@@ -10,7 +10,7 @@ include('..\model\juego.php');
 include('..\model\Utils.php');
 
 // Iniciar la sesión solo una vez al principio del script
-session_start();
+if (session_status() != PHP_SESSION_ACTIVE) session_start();
 
 // Verificar si la sesión está iniciada
 if (true) {
@@ -26,6 +26,13 @@ if (true) {
         if (is_numeric($idJuego)) {
             // Eliminar el juego y verificar el resultado
             $eliminacionExitosa = ModelJuego::del_juego($pdo, $idJuego);
+
+            //Cargamos la vista principal
+            //Cargamos los datos de los productos
+            $datosProducto = ModelJuego::get_juegos($pdo);
+
+            //Cargamos la vista
+            include('../view/Mostrar_juegos.php');
         }
     }
 }

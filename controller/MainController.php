@@ -8,7 +8,7 @@ include_once('..\model\Juego.php');
 include_once('..\model\Utils.php');
 
 // Iniciar la sesión solo una vez al principio del script
-session_start();
+if (session_status() != PHP_SESSION_ACTIVE) session_start();
 
 // Verificar si la sesión está iniciada
 if (true) {
@@ -22,6 +22,6 @@ if (true) {
     }
 } else {
     // La sesión no está iniciada, incluir la página de inicio de sesión
-    include('../controller/Registrar.php');
+    include('../controller/login.php');
     exit();
 }

@@ -48,21 +48,6 @@
             </thead>
             <tbody>
                 <?php
-
-                if (isset($_POST["controller"])) {
-                    switch ($_POST["controller"]) {
-                        case "eliminar":
-                            include  "../controller/EliminarJuegoController.php";
-                            break;
-                        case "insertar":
-                            include  "../controller/InsertarJuegoController.php";
-                            break;
-                        case "modificar":
-                            include "../controller/ModificarJuegoController.php";
-                            break;
-                    }
-                }
-
                 include '../controller/MainController.php';
                 //Recorremos todos los registros de la base de datos
                 for ($i = 0; $i < count($datos_juegos); $i++) {
@@ -90,9 +75,8 @@
                     print("</form>");
                     //Boton para eliminar
 
-                    print("<form action=../view/Mostrar_juegos.php method=POST>\n");
+                    print("<form action=../controller/EliminarJuegoController.php method=POST>\n");
                     print("<input type=hidden name='id_juego' value='" . $datos_juegos[$i]['id_juego'] . "'>");
-                    print("<input type=hidden name='controller' value='eliminar'>");
                     print("<td><button type=submit>Eliminar</button></td>");
                     print("</form>");
 
@@ -105,6 +89,7 @@
         <!-- Boton para añadir los productos -->
         <form action='../view/Ver_juegos.php' method='POST'>
             <input type='hidden' name='controller' value='insertar'>
+            <input type='hidden' name='id_juego' value='1'>
             <button type='submit'>Añadir Producto</button>
         </form>
 </body>

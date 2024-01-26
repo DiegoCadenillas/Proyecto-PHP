@@ -8,7 +8,6 @@
     //Habria que comprobar en todas las vistas que la sesion esta iniciada
     if (!isset($_POST['controller']))
         header('location:Mostrar_juegos.php');
-
     ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,9 +19,7 @@
 <body>
     <div class="container-sm col-sm" style="padding-top:40px;">
         <!--El formulario envia con el metodo post los datos -->
-        <form method="post" action="../view/Mostrar_Juegos.php">
-
-
+        <form method="post" action="../controller/<?= $_POST["controller"] ?>JuegoController.php">
             <input type="hidden" name="id_juego" value="<?= $_POST["id_juego"] ?>">
 
             <div class="input-group mb-3">
@@ -59,9 +56,6 @@
                 <span class="input-group-text" id="basic-addon1">Idioma: </span>
                 <input type="text" name="idioma" value="<?= (isset($_POST['idioma']) ? $_POST['idioma'] : '') ?>" class="form-control" placeholder="Idioma">
             </div>
-
-            <input type="hidden" name="controller" value="<?= $_POST["controller"] ?>">
-
             <!-- este boton lanza el formulario al ser tipo submit -->
             <button class="btn btn-primary" type="submit">Enviar</button>
     </div>

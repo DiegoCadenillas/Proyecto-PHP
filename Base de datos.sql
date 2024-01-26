@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS juegosmesasdb;
+DROP DATABASE IF EXISTS juegosmesadb;
 
-CREATE DATABASE IF NOT EXISTS juegosmesasdb;
+CREATE DATABASE IF NOT EXISTS juegosmesadb;
 
-USE juegosmesasdb;
+USE juegosmesadb;
 
 CREATE TABLE IF NOT EXISTS Juegos(
 id_juego INT AUTO_INCREMENT PRIMARY KEY,

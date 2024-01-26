@@ -26,7 +26,7 @@ if (true) {
         $pegi = ModelUtils::validar_datos($_POST['pegi']);
         $idioma = ModelUtils::validar_datos($_POST['idioma']);
         $descripcion = ModelUtils::validar_datos($_POST['descripcion']);
-        $precio = ModelUtils::validar_datos($_POST[$precio]);
+        $precio = ModelUtils::validar_datos($_POST['precio']);
 
         // Verificar si todos los datos son válidos antes de proceder
         if (is_numeric($id_juego) && $nombre && is_numeric($max_jugadores) && is_numeric($min_jugadores) && is_numeric($pegi) && $idioma && $descripcion  && is_numeric($precio)) {

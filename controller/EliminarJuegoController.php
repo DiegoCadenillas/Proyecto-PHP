@@ -20,7 +20,7 @@ if (isset($_SESSION['user'])) {
     // Verificar la conexión exitosa antes de proceder
     if ($pdo) {
         // Validar y procesar el ID del juego a eliminar
-        $idJuego = ModelUtils::validar_datos($_POST['idJuego']);
+        $idJuego = ModelUtils::validar_datos($_POST['id_juego']);
 
         // Verificar si el ID es válido antes de proceder
         if (is_numeric($idJuego)) {

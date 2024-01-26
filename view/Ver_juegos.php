@@ -20,7 +20,7 @@
 <body>
     <div class="container-sm col-sm" style="padding-top:40px;">
         <!--El formulario envia con el metodo post los datos -->
-        <form method="post" action="../controller/<?= $_POST['accion'] ?>JuegoController.php">
+        <form method="post" action="../view/Mostrar_Juegos.php">
 
 
             <div class="input-group mb-3">
@@ -60,8 +60,11 @@
 
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Idioma: </span>
-                <input type="text" name="idioma" value="<?= (isset($_POST['idioma']) ? $_POST['idioma'] : '') ?>" class="form-control" placeholder="Tamaño">
+                <input type="text" name="idioma" value="<?= (isset($_POST['idioma']) ? $_POST['idioma'] : '') ?>" class="form-control" placeholder="Idioma">
             </div>
+
+            <input type=hidden name='controller' value='<?= $_POST["controller"] ?>>
+
             <!-- este boton lanza el formulario al ser tipo submit -->
             <button class="btn btn-primary" type="submit">Enviar</button>
     </div>

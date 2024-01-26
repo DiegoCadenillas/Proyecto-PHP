@@ -36,13 +36,6 @@ if (true) {
             //Insertamos el producto
             //Habria que comprobar que se ha insertado bien
             ModelJuego::insert_juego($pdo, $nuevoJuego);
-
-            //Cargamos la vista principal
-            //Cargamos los datos de los productos
-            $datos_juegos = ModelJuego::get_juegos($pdo);
-
-            //Cargamos la vista
-            include '../view/Mostrar_juegos.php';
         }
     }
 }

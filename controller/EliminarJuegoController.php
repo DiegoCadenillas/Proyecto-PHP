@@ -7,7 +7,7 @@ use JUEGOSMESA\model\Utils as ModelUtils;
 
 // Incluir el archivo juego.php
 include('..\model\juego.php');
-include ('..\model\Utils.php');
+include('..\model\Utils.php');
 
 // Iniciar la sesión solo una vez al principio del script
 session_start();
@@ -26,15 +26,6 @@ if (true) {
         if (is_numeric($idJuego)) {
             // Eliminar el juego y verificar el resultado
             $eliminacionExitosa = ModelJuego::del_juego($pdo, $idJuego);
-
-         //Cargamos la vista principal
-  //Cargamos los datos de los productos
-  $datos_juegos = ModelJuego::get_juegos($pdo);
-
-  //Cargamos la vista
-  include('../view/Mostrar_juegos.php');
-
+        }
+    }
 }
-}
-}
-?>

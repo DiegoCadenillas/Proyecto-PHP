@@ -23,10 +23,7 @@
         <form method="post" action="../view/Mostrar_Juegos.php">
 
 
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Id: </span>
-                <input type="text" name="id_juego" value="<?= (isset($_POST['id_juego']) ? $_POST['id_juego'] : '') ?>" class="form-control" placeholder="Nombre Usuario">
-            </div>
+            <input type="hidden" name="id_juego" value="<?= $_POST["id_juego"] ?>">
 
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Nombre: </span>

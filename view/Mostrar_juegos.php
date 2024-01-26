@@ -74,7 +74,7 @@
                     print("<td><button type=submit>Modificar</button></td>");
                     print("</form>");
                     //Boton para eliminar
-                    print("<form action=EliminarJuegoController.php method=POST>\n");
+                    print("<form action=../controller/EliminarJuegoController.php method=POST>\n");
                     print("<input type=hidden name='id_juego' value='" . $datos_juegos[$i]['id_juego'] . "'>");
                     print("<td><button type=submit>Eliminar</button></td>");
                     print("</form>");
@@ -85,7 +85,7 @@
                 ?>
         </table>
         </tbody>
-        <!-- Boton para mostrar los productos -->
+        <!-- Boton para añadir los productos -->
         <form action='../view/Ver_juegos.php' method='POST'>
             <input type='hidden' name='accion' value='Insertar'>
             <button type='submit'>Añadir Producto</button>

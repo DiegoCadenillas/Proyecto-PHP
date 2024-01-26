@@ -37,11 +37,12 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">NOMBRE</th>
-                    <th scope="col">DESCRIPCION</th>
                     <th scope="col">NUMERO DE JUGADORES MINIMO</th>
                     <th scope="col">NUMERO DE JUGADORES MAXIMO</th>
                     <th scope="col">PEGI</th>
+                    <th scope="col">PRECIO</th>
                     <th scope="col">IDIOMA</th>
+                    <th scope="col">DESCRIPCION</th>
 
                 </tr>
             </thead>

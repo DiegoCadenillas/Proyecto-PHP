@@ -33,23 +33,7 @@ INSERT INTO `juegos` (`id_juego`, `nombre`, `min_jugadores`, `max_jugadores`, `p
 (3, 'Risk', 2, 6, 8, 'Español', 'Juego de tablero de estrategia militar'),
 (4, 'The worlds games', 2, 5, 11, 'Ingles', 'juego de carta sobre geografía');
 
---
--- Índices para tablas volcadas
---
 
---
--- Indices de la tabla `juegos`
---
-ALTER TABLE `juegos`
-  ADD PRIMARY KEY (`id_juego`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `juegos`
---
 ALTER TABLE `juegos`
   MODIFY `id_juego` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;

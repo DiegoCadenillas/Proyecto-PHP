@@ -10,7 +10,7 @@
 <body>
     <h2>Iniciar Sesión</h2>
     <form method="post" action="/controller/IniciarSesion.php">
-        <label for="correo">Correo Electrónico:</label>
+        <label for="usuario">Usuario:</label>
         <input type="email" name="correo" required><br>
 
         <label for="contrasena">Contraseña:</label>

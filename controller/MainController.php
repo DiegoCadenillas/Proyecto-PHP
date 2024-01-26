@@ -4,14 +4,14 @@ namespace JUEGOSMESA\controller;
 use JUEGOSMESA\model\Juego as ModelJuego;
 use JUEGOSMESA\model\Utils as ModelUtils;
 
-include('..\model\Juego.php');
-include('..\model\Utils.php');
+include_once('..\model\Juego.php');
+include_once('..\model\Utils.php');
 
 // Iniciar la sesión solo una vez al principio del script
 session_start();
 
 // Verificar si la sesión está iniciada
-if (isset($_SESSION['user'])) {
+if (true) {
     // Conectar a la base de datos
     $pdo = ModelUtils::conectar();
 

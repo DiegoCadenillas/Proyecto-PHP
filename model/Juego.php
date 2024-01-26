@@ -71,36 +71,46 @@ class Juego
             $coma = false;
 
             if (isset($juego["nombre"])) {
-                $query = $query . " nombre = :nombre";
+                $query .= " nombre = :nombre";
                 $coma = true;
             }
 
-            if (isset($juego["min_jug"])) {
-                $query = $query . ($coma) ? "," : "" . " min_jugadores=:min_jugadores";
+            if (isset($juego["min_jugadores"])) {
+                if ($coma) $query .= ",";
+                $query .= " min_jugadores=:min_jugadores";
                 $coma = true;
             }
 
-            if (isset($juego["max_jug"])) {
-                $query = $query . ($coma) ? "," : "" . " max_jugadores=:max_jugadores";
+            if (isset($juego["max_jugadores"])) {
+                if ($coma) $query .= ",";
+                $query .= " max_jugadores=:max_jugadores";
                 $coma = true;
             }
 
             if (isset($juego["pegi"])) {
-                $query = $query . ($coma) ? "," : "" . " pegi=:pegi";
+                if ($coma) $query .= ",";
+                $query .= " pegi=:pegi";
                 $coma = true;
             }
 
             if (isset($juego["idioma"])) {
-                $query = $query . ($coma) ? "," : "" . " idioma=:idioma";
+                if ($coma) $query .= ",";
+                $query .= " idioma=:idioma";
                 $coma = true;
             }
 
             if (isset($juego["descripcion"])) {
-                $query = $query . ($coma) ? "," : "" . " descripcion=:descripcion";
+                if ($coma) $query .= ",";
+                $query .= " descripcion=:descripcion";
+            }
+
+            if (isset($juego["precio"])) {
+                if ($coma) $query .= ",";
+                $query .= " precio=:precio";
             }
 
             if (isset($juego["id_juego"])) {
-                $query = $query . " WHERE id_juego=:id_juego";
+                $query .= " WHERE id_juego=:id_juego";
             }
 
             // Depuración mostrar query
@@ -126,6 +136,9 @@ class Juego
             }
             if (isset($juego["descripcion"])) {
                 $stmt->bindValue(":descripcion", $juego["descripcion"]);
+            }
+            if (isset($juego["precio"])) {
+                $stmt->bindValue(":precio", $juego["precio"]);
             }
             if (isset($juego["id_juego"])) {
                 $stmt->bindValue(":id_juego", $juego["id_juego"]);

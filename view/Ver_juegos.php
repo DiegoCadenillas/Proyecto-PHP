@@ -6,7 +6,7 @@
 
 
     //Habria que comprobar en todas las vistas que la sesion esta iniciada
-    if (!isset($_POST['accion']))
+    if (!isset($_POST['controller']))
         header('location:Mostrar_juegos.php');
 
     ?>
@@ -63,7 +63,7 @@
                 <input type="text" name="idioma" value="<?= (isset($_POST['idioma']) ? $_POST['idioma'] : '') ?>" class="form-control" placeholder="Idioma">
             </div>
 
-            <input type=hidden name='controller' value='<?= $_POST["controller"] ?>>
+            <input type="hidden" name="controller" value="<?= $_POST["controller"] ?>">
 
             <!-- este boton lanza el formulario al ser tipo submit -->
             <button class="btn btn-primary" type="submit">Enviar</button>

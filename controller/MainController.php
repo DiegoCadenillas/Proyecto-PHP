@@ -22,6 +22,6 @@ if (isset($_SESSION['user'])) {
     }
 } else {
     // La sesión no está iniciada, incluir la página de inicio de sesión
-    include('../view/Registrar.php');
+    include('../controller/Registrar.php');
     exit();
 }

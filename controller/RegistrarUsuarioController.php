@@ -1,4 +1,5 @@
 <?php
+
 namespace JUEGOSMESA\controller;
 
 use JUEGOSMESA\model\Usuario as ModelUsuario;
@@ -16,17 +17,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre = $_POST['nombre'];
     $email = $_POST['email'];
     $contrasena = $_POST['contrasena'];
-    
-    if ($pdo) {
-        // Método Usuario.php
-        ModelUsuario::crear_usuario($pdo, $nombre, $email, $contrasena);
 
-        // Redirigir al usuario a una página de éxito
-        include '../view/exito.php';
+    if ($pdo) {
+        // Compruebo que el correo y el nombre están disponibles, si es así creo la cuenta
+        if (!Modelusuario::existe_usuario($pdo, $nombre, $email)) {
+            ModelUsuario::crear_usuario($pdo, $nombre, $email, $contrasena);
+            // Redirigir al usuario a una página de éxito
+            include '../view/exito.php';
+        } else {
+            // Mostraremos una advertencia para indicar al usuario que los datos recibidos ya están en uso
+            $error_usuario = true;
+            include '../view/Registro.php';
+        }
+
         exit();
     }
 } else {
     include '../view/Registro.html';
     exit();
 }
-?>

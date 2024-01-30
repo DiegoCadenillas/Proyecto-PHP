@@ -164,7 +164,7 @@ class Juego
     {
         try {
             // Query para insertar los datos recibidos como un juego nuevo
-            $query = "INSERT INTO juegos (nombre,min_jugadores,max_jugadores,pegi,idioma,descripcion) VALUES (:nombre,:min_jugadores,:max_jugadores,:pegi,:idioma,:descripcion)";
+            $query = "INSERT INTO juegos (nombre,min_jugadores,max_jugadores,pegi,precio,idioma,descripcion) VALUES (:nombre,:min_jugadores,:max_jugadores,:pegi,:precio, :idioma,:descripcion)";
             // Preparo la query
             $stmt = $pdo->prepare($query);
             // Asignamos los valores de las variables
@@ -172,6 +172,7 @@ class Juego
             $stmt->bindValue("min_jugadores", $juego["min_jugadores"]);
             $stmt->bindValue("max_jugadores", $juego["max_jugadores"]);
             $stmt->bindValue("pegi", $juego["pegi"]);
+            $stmt->bindValue("precio", $juego["precio"]);
             $stmt->bindValue("idioma", $juego["idioma"]);
             $stmt->bindValue("descripcion", $juego["descripcion"]);
             // Ejecutamos la query

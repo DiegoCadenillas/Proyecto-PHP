@@ -20,8 +20,10 @@ if (true) {
         // Cargar los datos de los juegos
         $datos_juegos = ModelJuego::get_juegos($pdo);
     }
+
+    include("../view/Mostrar_juegos.php");
 } else {
     // La sesión no está iniciada, incluir la página de inicio de sesión
-    include('../controller/login.php');
+    include('../view/login.php');
     exit();
 }

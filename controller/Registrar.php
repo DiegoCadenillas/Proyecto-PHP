@@ -1,26 +1,25 @@
 <?php
 namespace JUEGOSMESA\controller;
 
-use JUEGOSMESA\model\Juego as ModelJuego;
+use JUEGOSMESA\model\Usuario as ModelUsuario;
 use JUEGOSMESA\model\Utils as ModelUtils;
 
-include('..\model\Juego.php');
+include('..\model\Usuario.php');
 include('..\model\Utils.php');
 
 // Verificar si el formulario ha sido enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    echo random_bytes(8);
+    // Establecer la conexión a la base de datos
+    $pdo = ModelUtils::conectar();
+
     // Obtener datos del formulario
     $nombre = $_POST['nombre'] ?? '';
     $email = $_POST['email'] ?? '';
     $contrasena = $_POST['contrasena'] ?? '';
-
-    
-    // Establecer la conexión a la base de datos
-    $pdo = ModelUtils::conectar();
     if ($pdo) {
 
-        // Metodo Usuaraio.php
+        // Metodo Usuario.php
+
 
         // Enviar el correo de activación
         // ...

@@ -25,13 +25,14 @@ if (true) {
         $max_jugadores = ModelUtils::validar_datos($_POST['max_jugadores']);
         $min_jugadores = ModelUtils::validar_datos($_POST['min_jugadores']);
         $pegi = ModelUtils::validar_datos($_POST['pegi']);
+        $precio = ModelUtils::validar_datos($_POST['precio']);
         $idioma = ModelUtils::validar_datos($_POST['idioma']);
         $descripcion = ModelUtils::validar_datos($_POST['descripcion']);
 
         // Verificar si todos los datos son válidos antes de proceder
-        if ($id_juego && $nombre && is_numeric($max_jugadores) && is_numeric($min_jugadores) && is_numeric($pegi) && $idioma && $descripcion) {
+        if ($id_juego && $nombre && is_numeric($max_jugadores) && is_numeric($min_jugadores) && is_numeric($pegi) && is_numeric($precio) && $idioma && $descripcion) {
             // Crear el array asociativo con los datos del juego
-            $nuevoJuego = ['id_juego' => $id_juego, 'nombre' => $nombre, 'max_jugadores' => $max_jugadores, 'min_jugadores' => $min_jugadores, 'pegi' => $pegi, 'idioma' => $idioma, 'descripcion' => $descripcion];
+            $nuevoJuego = ['id_juego' => $id_juego, 'nombre' => $nombre, 'max_jugadores' => $max_jugadores, 'min_jugadores' => $min_jugadores, 'pegi' => $pegi, 'precio' => $precio, 'idioma' => $idioma, 'descripcion' => $descripcion, ];
 
             //Insertamos el producto
             //Habria que comprobar que se ha insertado bien
@@ -42,7 +43,7 @@ if (true) {
         //Cargamos los datos de los productos
         $datosProducto = ModelJuego::get_juegos($pdo);
 
-        //Cargamos la vista
-        include('../view/Mostrar_Juegos.php');
+        //Cargamos el controlador principal
+        include('../controller/MainController.php');
     }
 }

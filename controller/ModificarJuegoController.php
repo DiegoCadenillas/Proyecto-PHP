@@ -50,7 +50,7 @@ if (true) {
             $datosProducto = ModelJuego::get_juegos($pdo);
 
             //Cargamos la vista
-            include('../view/Mostrar_juegos.php');
+            include('../controller/MainController.php');
         }
     }
 }

@@ -1,4 +1,11 @@
 <?php
+namespace JUEGOSMESA\controller;
+
+use JUEGOSMESA\model\Juego as ModelJuego;
+use JUEGOSMESA\model\Utils as ModelUtils;
+
+include('..\model\Juego.php');
+include('..\model\Utils.php');
 
 // Verificar si el formulario ha sido enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -12,11 +19,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Generar un código de activación único
     $codigo_activacion = bin2hex(random_bytes(32));
-
-    try {
-        // Establecer la conexión a la base de datos
-        $pdo = new PDO('mysql:host=localhost;dbname=juegosmesasdb', 'usuario', 'contrasena');
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+    // Establecer la conexión a la base de datos
+    $pdo = ModelUtils::conectar();
+    if ($pdo) {
 
         // Preparar una consulta SQL para insertar los datos en la tabla de usuarios
         $stmt = $pdo->prepare("INSERT INTO Usuario (nombre, email, password_hash, activation_token, activo) VALUES (:nombre, :correo, :password_hash, :activation_token, 0)");
@@ -36,8 +42,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Redirigir al usuario a una página de éxito
         include '../view/exito.php';
         exit();
-    } catch (PDOException $e) {
-        echo 'Error al registrar el usuario: ' . $e->getMessage();
     }
 } else {
     include '../view/Registro.html';

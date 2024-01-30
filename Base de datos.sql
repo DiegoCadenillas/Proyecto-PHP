@@ -21,7 +21,6 @@ nombre VARCHAR(60) NOT NULL,
 password_hash VARCHAR(100) NOT NULL, 
 activation_token VARCHAR(100) NOT NULL,
 email VARCHAR(100) NOT NULL,
-salt VARCHAR(100),
 activo TINYINT(1) NOT NULL
 );
 

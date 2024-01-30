@@ -13,16 +13,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pdo = ModelUtils::conectar();
 
     // Obtener datos del formulario
-    $nombre = $_POST['nombre'] ?? '';
-    $email = $_POST['email'] ?? '';
-    $contrasena = $_POST['contrasena'] ?? '';
+    $nombre = $_POST['nombre'];
+    $email = $_POST['email'];
+    $contrasena = $_POST['contrasena'];
+    
     if ($pdo) {
-
-        // Metodo Usuario.php
-
-
-        // Enviar el correo de activación
-        // ...
+        // Método Usuario.php
+        ModelUsuario::crear_usuario($pdo, $nombre, $email, $contrasena);
 
         // Redirigir al usuario a una página de éxito
         include '../view/exito.php';

@@ -16,7 +16,7 @@
     <h2>Iniciar Sesión</h2>
     <form method="post" action="../controller/IniciarSesion.php">
         <label for="usuario">Usuario:</label>
-        <input type="email" name="correo" required><br>
+        <input type="email" name="email" required><br>
 
         <label for="contrasena">Contraseña:</label>
         <input type="password" name="contrasena" required><br>

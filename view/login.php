@@ -24,7 +24,7 @@
         <input type="submit" value="Iniciar Sesión">
     </form>
 
-    <p>¿No tienes una cuenta? <a href="Registro.html">Regístrate aquí</a>.</p>
+    <p>¿No tienes una cuenta? <a href="Registro.php">Regístrate aquí</a>.</p>
 </body>
 <footer>
 

@@ -2,6 +2,8 @@
 
 namespace JUEGOSMESA\model;
 
+use PDOException;
+
 /**
  * 
  */
@@ -56,6 +58,7 @@ class Usuario
         // Asumimos al principio que la sesión no se inicia
         $inicio_sesion = false;
 
+        try {
         // Preparamos la query
         $stmt = $pdo->prepare("SELECT password_hash FROM Usuario WHERE email=:email");
 
@@ -63,11 +66,17 @@ class Usuario
         $stmt->bindValue(":email", $email);
 
         // La ejecutamos y cogemos el resultado
-        $resultado = $stmt->execute();
-        $contrasena_guardada = $resultado->fetch();
+        $stmt->execute();
+        $result = $stmt->fetchAll()[0];
+        // La contraseña primera que encontremos es la única que nos hace falta dado que no hay más cuentas con este correo
+        $contrasena_encriptada = $result[0];
+
+        } catch (PDOException $e) {
+            echo "ERROR: " . $e->getMessage();
+        }
 
         // Comparamos la contraseña recibida con la guardada en la BDD
-        if (password_verify($contrasena, $contrasena_guardada)) {
+        if (password_verify($contrasena, $contrasena_encriptada)) {
             $inicio_sesion = true;
         }
 

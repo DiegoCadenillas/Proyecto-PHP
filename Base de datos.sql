@@ -26,7 +26,7 @@ activo TINYINT(1) NOT NULL
 
 CREATE TABLE IF NOT EXISTS Reseña (
 id_reseña INT AUTO_INCREMENT PRIMARY KEY,
-id_usuario VARCHAR(100) NOT NULL, 
+id_usuario INT NOT NULL, 
 comentario  VARCHAR(255),
 fecha_Hora DATE,
 puntuación FLOAT, 
@@ -35,7 +35,7 @@ FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario)
 
 CREATE TABLE IF NOT EXISTS Pedido(
 id_pedido INT AUTO_INCREMENT PRIMARY KEY,
-id_usuario VARCHAR(100) NOT NULL, 
+id_usuario INT NOT NULL, 
 id_producto INT NOT NULL,
 importe FLOAT, 
 fechaHora DATE, 

@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($inicio_sesion) {
             // La sesión se ha iniciado correctamente
             $_SESSION['user'] = $email; // Establecer una variable de sesión para el usuario
-            // Redirigir al usuario a la página de inicio o a donde desees
+            // Redirigir al usuario a la página de inicio
             include('../view/index.php');
             exit();
         } else {

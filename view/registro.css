@@ -1,12 +1,25 @@
 /* Estilos generales */
+html {
+  padding: 0;
+  margin: 0;
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  height: 100%;
+  background-image: url(../view/Imagenes/InicioSesion\ .jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
 }
 
 .container {
-  max-width: 800px;
+  max-width: 8800px;
+
   margin: 0 auto;
   padding: 20px;
 }

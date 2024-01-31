@@ -14,17 +14,20 @@
     print("<div class='error'><b>ERROR:</b> El nombre y/o correo electrónico dado(s) ya está(n) en uso.</div>");
   }
   ?>
-  <form method="post" action="../controller/RegistrarUsuarioController.php">
-    <label for="nombre">Nombre:</label>
-    <input type="text" name="nombre" required /><br />
+  <div class="container">
+    <form method="post" action="../controller/RegistrarUsuarioController.php">
+      <label for="nombre">Nombre:</label>
+      <input type="text" name="nombre" required /><br />
 
-    <label for="correo">Correo Electrónico:</label>
-    <input type="email" name="email" required /><br />
+      <label for="correo">Correo Electrónico:</label>
+      <input type="email" name="email" required /><br />
 
-    <label for="contrasena">Contraseña:</label>
-    <input type="password" name="contrasena" required /><br />
+      <label for="contrasena">Contraseña:</label>
+      <input type="password" name="contrasena" required /><br />
 
-    <input type="submit" value="Registrarse" />
+      <input type="submit" value="Registrarse" />
+
+  </div>
   </form>
 </body>
 

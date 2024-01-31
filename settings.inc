@@ -1,6 +1,6 @@
 <?php
 $usuario = "root";
-$password = "root";
+$password = "";
 $dbname = "juegosmesadb";
 $host = "localhost";
 ?>

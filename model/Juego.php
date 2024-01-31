@@ -93,6 +93,12 @@ class Juego
                 $coma = true;
             }
 
+            if (isset($juego["precio"])) {
+                if ($coma) $query .= ",";
+                $query .= " precio=:precio";
+                $coma = true;
+            }
+
             if (isset($juego["idioma"])) {
                 if ($coma) $query .= ",";
                 $query .= " idioma=:idioma";

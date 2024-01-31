@@ -30,11 +30,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             include('../view/index.php');
             exit();
         } else {
-            // La autenticación falló, muestra un mensaje de error o redirige al usuario a la página de inicio de sesión
-            echo "Autenticación fallida. Por favor, verifica tus credenciales.";
-            // Puedes redirigir al usuario a la página de inicio de sesión si lo deseas
-            // header('Location: ../view/InicioSesion.php');
-            // exit();
+            $error_usuario = true;
+            include('../view/login.php');
         }
     } else {
         // Error en la conexión a la base de datos

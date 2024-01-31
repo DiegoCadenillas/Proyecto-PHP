@@ -13,6 +13,11 @@
 </header>
 
 <body>
+    <?php
+    if (isset($error_usuario)) {
+        print("<div class='error'><b>ERROR:</b> Ha habido un error al iniciar la sesión. Por favor, verifica tus credenciales.</div>");
+    }
+    ?>
     <h2>Iniciar Sesión</h2>
     <form method="post" action="../controller/IniciarSesionController.php">
         <label for="usuario">Correo electrónico:</label>

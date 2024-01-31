@@ -27,8 +27,8 @@
 
       <input type="submit" value="Registrarse" />
 
+    </form>
   </div>
-  </form>
 </body>
 
 </html>

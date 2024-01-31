@@ -27,11 +27,11 @@ SET time_zone = "+00:00";
 -- Volcado de datos para la tabla `juegos`
 --
 
-INSERT INTO `juegos` (`id_juego`, `nombre`, `min_jugadores`, `max_jugadores`, `pegi`, `idioma`, `descripcion`) VALUES
-(1, 'Monopoly', 2, 6, 8, 'Español', 'juego sobre gestión inmobiliaria'),
-(2, 'Cluedo', 2, 8, 6, 'Español', 'juego de misterio sobre descubrir quien ha cometido el crimen'),
-(3, 'Risk', 2, 6, 8, 'Español', 'Juego de tablero de estrategia militar'),
-(4, 'The worlds games', 2, 5, 11, 'Ingles', 'juego de carta sobre geografía');
+INSERT INTO `juegos` (`id_juego`, `nombre`, `min_jugadores`, `max_jugadores`, `pegi`,`precio` , `idioma`, `descripcion`) VALUES
+(1, 'Monopoly', 2, 6, 8,15, 'Español', 'juego sobre gestión inmobiliaria'),
+(2, 'Cluedo', 2, 8, 6,32, 'Español', 'juego de misterio sobre descubrir quien ha cometido el crimen'),
+(3, 'Risk', 2, 6, 8,45, 'Español', 'Juego de tablero de estrategia militar'),
+(4, 'The worlds games', 2, 5, 11,150, 'Ingles', 'juego de carta sobre geografía');
 
 
 ALTER TABLE `juegos`

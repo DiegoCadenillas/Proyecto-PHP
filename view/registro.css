@@ -18,8 +18,7 @@ body {
 }
 
 .container {
-  max-width: 8800px;
-
+  max-width: 800px;
   margin: 0 auto;
   padding: 20px;
 }
@@ -47,7 +46,9 @@ footer {
 form {
   background-color: #f2f2f2;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 15px;
+  margin-top: 200px;
+  width: 350px;
 }
 
 h2 {

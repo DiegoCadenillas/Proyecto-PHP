@@ -15,6 +15,7 @@
   }
   ?>
   <div class="container">
+    <h2>Registrar una cuenta nueva</h2>
     <form method="post" action="../controller/RegistrarUsuarioController.php">
       <label for="nombre">Nombre:</label>
       <input type="text" name="nombre" required /><br />

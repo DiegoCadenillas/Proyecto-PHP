@@ -14,7 +14,7 @@
         <form method="post" action="../controller/IniciarSesionController.php">
             <?php
             if (isset($error_usuario)) {
-                print("<div class='error'><b>ERROR:</b> Ha habido un error al iniciar la sesión. Por favor, verifica tus credenciales.</div>");
+                print("<div class='error'><div class='contenido-error'><b>ERROR:</b> Ha habido un error al iniciar la sesión. Por favor, verifica tus credenciales.</div></div>");
             }
             ?>
             <h2>Iniciar Sesión</h2>

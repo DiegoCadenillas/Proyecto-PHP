@@ -24,9 +24,24 @@ body {
   max-width: 800px;
   padding: 0;
 }
+@keyframes erroranimation {
+  0% {
+    background-color: rgb(255, 74, 74);
+  }
+  50% {
+    background-color: rgb(248, 153, 153);
+  }
+}
+.error {
+  background-color: rgb(248, 153, 153);
+  padding: 2%;
+  border-radius: 10px;
+  animation: erroranimation;
+  animation-duration: 2s;
+}
 
 /* Estilos para el formulario */
-form {
+.container {
   background-color: #f2f2f2;
   padding: 20px;
   border-radius: 15px;

@@ -16,8 +16,8 @@
     }
     ?>
     <div class="container">
-        <h2>Iniciar Sesión</h2>
         <form method="post" action="../controller/IniciarSesionController.php">
+            <h2>Iniciar Sesión</h2>
             <label for="usuario">Correo electrónico:</label>
             <input type="email" name="email" required><br>
 

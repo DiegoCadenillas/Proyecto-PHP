@@ -15,7 +15,6 @@
   }
   ?>
   <div class="container">
-
     <form method="post" action="../controller/RegistrarUsuarioController.php">
       <h2>Registrate</h2>
       <label for="nombre">Nombre:</label>

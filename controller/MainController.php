@@ -11,7 +11,7 @@ include_once('..\model\Utils.php');
 if (session_status() != PHP_SESSION_ACTIVE) session_start();
 
 // Verificar si la sesión está iniciada
-if (true) {
+if (isset($_SESSION["user"])) {
     // Conectar a la base de datos
     $pdo = ModelUtils::conectar();
 

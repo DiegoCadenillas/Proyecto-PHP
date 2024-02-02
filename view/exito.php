@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../view/registro.css">
     <title>Registro Exitoso</title>
 </head>
+
 <body>
     <div class="container">
         <h1>Registro Exitoso</h1>
@@ -12,4 +15,5 @@
         <p><a href="../view/index.php">Volver a la página principal</a></p>
     </div>
 </body>
+
 </html>

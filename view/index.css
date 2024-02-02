@@ -1,0 +1,26 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-image: url(../view/Imagenes/InicioSesion\ .jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: grid;
+}
+.table {
+  background-color: white;
+  margin-top: 10%;
+  width: 100%;
+  height: auto;
+}
+h1 {
+  background-color: rgb(251, 251, 251);
+  padding: 2%;
+  margin-top: 4%;
+  align-items: center;
+  font-family: "Medieval";
+  border-radius: 10px;
+}

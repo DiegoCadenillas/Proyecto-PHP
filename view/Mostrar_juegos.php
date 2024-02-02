@@ -25,7 +25,7 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <form action="CerrarSesionController.php" method="post">
+                <form action="../controller/CerrarSesionController.php" method="post">
                     <input type="submit" value="Cerrar sesión">
                 </form>
 

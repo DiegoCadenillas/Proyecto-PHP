@@ -67,7 +67,7 @@ class Usuario
 
             // La ejecutamos y cogemos el resultado
             $stmt->execute();
-            $result = $stmt->fetchAll();
+            $result = $stmt->fetch();
             // La contraseña primera que encontremos es la única que nos hace falta dado que no hay más cuentas con este correo
             if (isset($result[0])) $contrasena_encriptada = $result[0];
             else $contrasena_encriptada = "";

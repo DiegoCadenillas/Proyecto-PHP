@@ -9,13 +9,13 @@
 </head>
 
 <body>
-  <?php
-  if (isset($error_usuario)) {
-    print("<div class='error'><b>ERROR:</b> El nombre y/o correo electrónico dado(s) ya está(n) en uso.</div>");
-  }
-  ?>
   <div class="container">
     <form method="post" action="../controller/RegistrarUsuarioController.php">
+      <?php
+      if (isset($error_usuario)) {
+        print("<div class='error'><b>ERROR:</b> El nombre y/o correo electrónico dado(s) ya está(n) en uso.</div>");
+      }
+      ?>
       <h2>Registrate</h2>
       <label for="nombre">Nombre:</label>
       <input type="text" name="nombre" required /><br />

@@ -25,9 +25,9 @@
             <input type="password" name="contrasena" required><br>
 
             <input type="submit" value="Iniciar Sesión">
+            <p>¿No tienes una cuenta? <a href="Registro.php">Regístrate aquí</a>.</p>
         </form>
 
-        <p>¿No tienes una cuenta? <a href="Registro.php">Regístrate aquí</a>.</p>
 
     </div>
 </body>

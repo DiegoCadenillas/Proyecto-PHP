@@ -39,7 +39,7 @@ class Usuario
     public static function existe_usuario($pdo, $nombre, $email)
     {
         $stmt = $pdo->prepare("SELECT nombre, email FROM Usuario WHERE nombre=:nombre OR email=:email");
-        
+
         // Vincular los parámetros
         $stmt->bindParam(":nombre", $nombre);
         $stmt->bindParam(":email", $email);
@@ -59,18 +59,18 @@ class Usuario
         $inicio_sesion = false;
 
         try {
-        // Preparamos la query
-        $stmt = $pdo->prepare("SELECT password_hash FROM Usuario WHERE email=:email");
+            // Preparamos la query
+            $stmt = $pdo->prepare("SELECT password_hash FROM Usuario WHERE email=:email");
 
-        // Asignamos las variables
-        $stmt->bindValue(":email", $email);
+            // Asignamos las variables
+            $stmt->bindValue(":email", $email);
 
-        // La ejecutamos y cogemos el resultado
-        $stmt->execute();
-        $result = $stmt->fetchAll()[0];
-        // La contraseña primera que encontremos es la única que nos hace falta dado que no hay más cuentas con este correo
-        $contrasena_encriptada = $result[0];
-
+            // La ejecutamos y cogemos el resultado
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+            // La contraseña primera que encontremos es la única que nos hace falta dado que no hay más cuentas con este correo
+            if (isset($result[0])) $contrasena_encriptada = $result[0];
+            else $contrasena_encriptada = "";
         } catch (PDOException $e) {
             echo "ERROR: " . $e->getMessage();
         }

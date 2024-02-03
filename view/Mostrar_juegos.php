@@ -8,7 +8,8 @@
     <title>TableGames</title>
     <link rel="stylesheet" href="../view/index.css">
     <link rel="stylesheet" href="./Fuentes/MedievalSharp.css">
-
+    <!-- Cierre de sesión automático tras 5 minutos -->
+    <meta http-equiv="refresh" content="600;url=../controller/CerrarSesionController.php">
 
 </head>
 

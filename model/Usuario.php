@@ -64,6 +64,7 @@ class Usuario
         $mail->Body = "<h3>Bienvenido, $nombre!</h3>";
         $mail->Body .= "\nFalta un último paso para que pueda usar su nueva cuenta TableGames...";
         $mail->Body .= "\nSólo debe dar click al enlace para activar su cuenta.";
+        // Esto es direccionamiento absoluto. En práctica estaría bien: nuestra página web tendría un dominio y un servidor estáticos, no estaría cambiando por cada usuario...
         $mail->Body .= "\n<br><form method='post' action='localhost/DES/Proyecto-PHP/controller/ActivarCuentaController.php'>";
         $mail->Body .= "<input type=hidden name='email' value='$email'/>";
         $mail->Body .= "<input type=hidden name='activation_token' value='$activation_token'/>";

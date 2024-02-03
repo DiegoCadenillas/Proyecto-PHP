@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         // Error en la conexión a la base de datos
         echo "Error al conectar a la base de datos.";
-        // Puedes redirigir o mostrar un mensaje de error adecuado
+        
     }
 }
 ?>

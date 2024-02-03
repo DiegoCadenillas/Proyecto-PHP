@@ -40,7 +40,7 @@ class Usuario
 
         // Especificamos que vamos a usar un servidor SMTP
         $mail->isSMTP();
-        
+
         // Indicamos el nombre de nuestro host SMTP
         $mail->Host = "in-v3.mailjet.com";
 
@@ -65,7 +65,7 @@ class Usuario
         $mail->Body .= "\nFalta un último paso para que pueda usar su nueva cuenta TableGames...";
         $mail->Body .= "\nSólo debe dar click al enlace para activar su cuenta.";
         // Esto es direccionamiento absoluto. En práctica estaría bien: nuestra página web tendría un dominio y un servidor estáticos, no estaría cambiando por cada usuario...
-        $mail->Body .= "\n<br><form method='post' action='localhost/DES/Proyecto-PHP/controller/ActivarCuentaController.php'>";
+        $mail->Body .= "\n<br><form method='post' action='localhost/DES/Proyecto-PHP/controller/ActivarUsuarioController.php'>";
         $mail->Body .= "<input type=hidden name='email' value='$email'/>";
         $mail->Body .= "<input type=hidden name='activation_token' value='$activation_token'/>";
         $mail->Body .= "<button type='submit' style='background-color:black;color:white;padding:5px;border-radius:3px;'>Activar cuenta</button>";
@@ -78,7 +78,7 @@ class Usuario
     {
         $stmt = $pdo->prepare("SELECT nombre, email FROM Usuario WHERE nombre=:nombre OR email=:email");
 
-        // Vincular los parámetros
+        // Vinculo los parámetros
         $stmt->bindParam(":nombre", $nombre);
         $stmt->bindParam(":email", $email);
 
@@ -88,6 +88,61 @@ class Usuario
         // Si la cantidad de filas afectadas es mayor que 0 devuelvo true, caso contrario devuelvo false
         $result = ($stmt->rowCount() > 0) ? true : false;
         return $result;
+    }
+
+    // Función para activar un usuario con correo y código de activación recibidos
+    public static function activar_usuario($pdo, $email, $activation_token)
+    {
+        // Aunque podemos asumir que el código de activación es correcto dado que se llama a esta función mediante el formulario preescrito en crear_usuario(), puede ser buena práctica verificar que el código es correcto de todas maneras
+        // Preparo una query para conseguir de la BDD al usuario con email dado
+        $stmt = $pdo->prepare("SELECT activation_token FROM Usuario WHERE email=:email");
+
+        // Vinculo los parámetros
+        $stmt->bindParam(":email", $email);
+
+        // Ejecuto la query
+        $stmt->execute();
+        $result = $stmt->fetch();
+        // El primer código de activación que encontremos es el de la cuenta deseada dado que sólo existe una cuenta por correo
+        if (isset($result[0])) $activation_token_guardado = $result[0];
+        else $activation_token_guardado = "";
+
+        // Si el código de activación es correcto activo la cuenta
+        if ($activation_token == $activation_token_guardado) {
+            // Preparo una query para actualizar el campo "activado" del usuario con email dado
+            $stmt = $pdo->prepare("UPDATE Usuario SET activo = 1 WHERE email=:email");
+
+            // Vinculo los parámetros
+            $stmt->bindParam(":email", $email);
+
+            // Ejecuto la query
+            $stmt->execute();
+
+            // Variable que indica la activación con éxito
+            $activado = true;
+        } else {
+            $activado = false;
+        }
+
+        // Indico el resultado de la llamada
+        return $activado;
+    }
+
+    // Función que verifica si el usuario indicado está activado o no
+    public static function es_activo($pdo, $email) {
+        // Preparo la query para recoger el estado de la cuenta
+        $stmt = $pdo->prepare("SELECT activo FROM Usuario WHERE email=:email");
+
+        // Vinculo los parámetros
+        $stmt->bindParam(":email", $email);
+
+        // Ejecuto la query y recojo el estado de la cuenta
+        $stmt->execute();
+        $result = $stmt->fetch();
+
+        // Si el estado de la cuenta es activo, devuelvo true, de lo contrario devuelvo false
+        $es_activo = (isset($result[0]) && $result[0] == 1) ? true : false;
+        return $es_activo;
     }
 
     // Función que recibe el correo y contraseña con los cuales se intenta iniciar sesión. Devuelve true si se inicia sesión correctamente, false en caso contrario

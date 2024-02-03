@@ -61,7 +61,7 @@ class Usuario
         $mail->addAddress($email, $nombre);
         $mail->isHTML(true);
         $mail->Subject = "Activación de Cuenta TableGames";
-        $mail->Body = "<h3>Bienvenido, $nombre!</h3>";
+        $mail->Body = "<h3>Bienvenid@, $nombre!</h3>";
         $mail->Body .= "\nFalta un último paso para que pueda usar su nueva cuenta TableGames...";
         $mail->Body .= "\nSólo debe dar click al enlace para activar su cuenta.";
         // Esto es direccionamiento absoluto. En práctica estaría bien: nuestra página web tendría un dominio y un servidor estáticos, no estaría cambiando por cada usuario...
@@ -74,12 +74,11 @@ class Usuario
     }
 
     // Función que comprueba si existe ya una cuenta con un nombre y/o correo asociado
-    public static function existe_usuario($pdo, $nombre, $email)
+    public static function existe_usuario($pdo, $email)
     {
-        $stmt = $pdo->prepare("SELECT nombre, email FROM Usuario WHERE nombre=:nombre OR email=:email");
+        $stmt = $pdo->prepare("SELECT nombre, email FROM Usuario WHERE email=:email");
 
         // Vinculo los parámetros
-        $stmt->bindParam(":nombre", $nombre);
         $stmt->bindParam(":email", $email);
 
         // Ejecuto la query

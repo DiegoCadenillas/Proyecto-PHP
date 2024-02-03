@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($pdo) {
         // Compruebo que el correo y el nombre están disponibles, si es así creo la cuenta
-        if (!Modelusuario::existe_usuario($pdo, $nombre, $email)) {
+        if (!Modelusuario::existe_usuario($pdo, $email)) {
             ModelUsuario::crear_usuario($pdo, $nombre, $email, $contrasena);
             // Redirigir al usuario a una página de éxito
             include '../view/exito.php';

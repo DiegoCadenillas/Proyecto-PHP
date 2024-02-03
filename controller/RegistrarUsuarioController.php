@@ -33,6 +33,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 } else {
-    include '../view/Registro.html';
+    include ('../view/Registro.html');
     exit();
 }

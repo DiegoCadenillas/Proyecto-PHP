@@ -3,7 +3,7 @@
 
 <head>
     <?php
-    if (!isset($_POST['controller']))
+    if (!isset($_SESSION['user']))
         header('location:../controller/MainController.php');
     ?>
     <meta charset="UTF-8">

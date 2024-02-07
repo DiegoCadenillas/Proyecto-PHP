@@ -4,7 +4,7 @@
 <head>
     <?php
     if (!isset($_POST['controller']))
-        header('location:Mostrar_juegos.php');
+        header('location:../controller/MainController.php');
     ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

@@ -19,21 +19,14 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <img src="../view/Imagenes/Logotipo.jpg" alt="logotipo">
-
-        <a class="navbar-brand" href="#">Bienvenido, <?= $_SESSION["user"] ?></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#">Inicio <span class="sr-only">(actual)</span></a>
                 </li>
                 <form action="../controller/CerrarSesionController.php" method="post">
                     <input type="submit" value="Cerrar sesión">
                 </form>
-
-
             </ul>
         </div>
     </nav>
@@ -49,50 +42,111 @@
                     <th scope="col">PRECIO</th>
                     <th scope="col">IDIOMA</th>
                     <th scope="col">DESCRIPCION</th>
-
+                    <th scope="col-group" colspan="2">
+                        <form action="../view/index.php" method=POST>
+                            <select name="num_juegos_pagina" onchange="this.form.submit()">
+                                <option value="4" default">Nº de juegos por página</option>
+                                <?php for ($i = 2; $i <= 6; $i++) print("<option value=$i>$i</option>"); ?>
+                            </select>
+                        </form>
+                    </th>
                 </tr>
             </thead>
             <h1>Esta es nuestra lista de juegos:</h1>
             <div class="tabla">
                 <tbody>
                     <?php
-                    //Recorremos todos los registros de la base de datos
-                    for ($i = 0; $i < count($datos_juegos); $i++) {
-                        //Para cada registro de BD hay que crear una fila de la tabla
-                        print("<tr>\n");
-                        //Recorremos todos los datos de este registro
-                        for ($j = 0; $j < count($datos_juegos[$i]) / 2; $j++) {
-                            //Para cada dato del registro creamos una celda
-                            print("<td>" . $datos_juegos[$i][$j] . "</td>\n");
+                    // Si existe al menos una página
+                    if (isset($array_paginas[0])) {
+                        for ($i = 0; $i < count($array_paginas[$pag_actual]); $i++) {
+                            //Para cada registro de BD hay que crear una fila de la tabla
+                            print("<tr>\n");
+                            //Recorremos todos los datos de este registro
+                            for ($j = 0; $j < count($array_paginas[$pag_actual][$i]) / 2; $j++) {
+                                //Para cada dato del registro creamos una celda
+                                print("<td>" . $array_paginas[$pag_actual][$i][$j] . "</td>\n");
+                            }
+
+
+                            print("<form action=../view/Ver_juegos.php method=POST>\n");
+                            //Boton para modificar el producto
+                            print("<input type='hidden' name='controller' value='modificar'>");
+                            print("<input type=hidden name='id_juego' value='" . $array_paginas[$pag_actual][$i]['id_juego'] . "'>");
+                            print("<input type=hidden name='nombre' value='" . $array_paginas[$pag_actual][$i]['nombre'] . "'>");
+                            print("<input type=hidden name='descripcion' value='" . $array_paginas[$pag_actual][$i]['descripcion'] . "'>");
+                            print("<input type=hidden name='min_jugadores' value='" . $array_paginas[$pag_actual][$i]['min_jugadores'] . "'>");
+                            print("<input type=hidden name='max_jugadores' value='" . $array_paginas[$pag_actual][$i]['max_jugadores'] . "'>");
+                            print("<input type=hidden name='pegi' value='" . $array_paginas[$pag_actual][$i]['pegi'] . "'>");
+                            print("<input type=hidden name='precio' value='" . $array_paginas[$pag_actual][$i]['precio'] . "'>");
+                            print("<input type=hidden name='idioma' value='" . $array_paginas[$pag_actual][$i]['idioma'] . "'>");
+                            print("<td><button type=submit>Modificar</button></td>");
+                            print("</form>");
+                            //Boton para eliminar
+
+                            print("<form action=../controller/EliminarJuegoController.php method=POST>\n");
+                            print("<input type=hidden name='id_juego' value='" . $array_paginas[$pag_actual][$i]['id_juego'] . "'>");
+                            print("<td><button type=submit>Eliminar</button></td>");
+                            print("</form>");
+
+                            print("</tr>\n");
                         }
-
-
-                        print("<form action=../view/Ver_juegos.php method=POST>\n");
-                        //Boton para modificar el producto
-                        print("<input type='hidden' name='controller' value='modificar'>");
-                        print("<input type=hidden name='id_juego' value='" . $datos_juegos[$i]['id_juego'] . "'>");
-                        print("<input type=hidden name='nombre' value='" . $datos_juegos[$i]['nombre'] . "'>");
-                        print("<input type=hidden name='descripcion' value='" . $datos_juegos[$i]['descripcion'] . "'>");
-                        print("<input type=hidden name='min_jugadores' value='" . $datos_juegos[$i]['min_jugadores'] . "'>");
-                        print("<input type=hidden name='max_jugadores' value='" . $datos_juegos[$i]['max_jugadores'] . "'>");
-                        print("<input type=hidden name='pegi' value='" . $datos_juegos[$i]['pegi'] . "'>");
-                        print("<input type=hidden name='precio' value='" . $datos_juegos[$i]['precio'] . "'>");
-                        print("<input type=hidden name='idioma' value='" . $datos_juegos[$i]['idioma'] . "'>");
-                        print("<td><button type=submit>Modificar</button></td>");
-                        print("</form>");
-                        //Boton para eliminar
-
-                        print("<form action=../controller/EliminarJuegoController.php method=POST>\n");
-                        print("<input type=hidden name='id_juego' value='" . $datos_juegos[$i]['id_juego'] . "'>");
-                        print("<td><button type=submit>Eliminar</button></td>");
-                        print("</form>");
-
-                        print("</tr>\n");
                     }
-
                     ?>
+                </tbody>
         </table>
-        </tbody>
+
+        <!-- Botones de cambio de página -->
+        <div>
+            <?php
+            // switch para mostrar por pantalla las páginas que hay
+            print("<form class='contenedor-botones' action='../view/index.php' method=POST>");
+            print("<input type='hidden' name='num_juegos_pagina' value='$num_juegos_pagina'/>");
+            switch ($pag_actual) {
+                    // Caso en el que estemos en la primera página
+                case 0:
+                    // Muestro la página actual
+                    print("<button class='boton-pag' type='button'>" . ($pag_actual + 1) . "</button>");
+                    // Si hay más páginas
+                    if (count($array_paginas) > 1) {
+                        // Indico que hay más páginas
+                        print("<p>...</p>");
+                        // Muestro un botón a la última página
+                        print("<button class='boton-pag' type='submit' name='pag_actual' value='" . (count($array_paginas) - 1) . "'>" . (count($array_paginas)) . "</button>");
+                        // Muestro un botón a la siguiente página
+                        print("<button type='submit' name='pag_actual' value='" . ($pag_actual + 1) . "'> > </button>");
+                    }
+                    break;
+                    // Caso en el que estemos en la última página
+                case (count($array_paginas) - 1):
+                    // Muestro un botón a la página anterior
+                    print("<button type='submit' name='pag_actual' value='" . ($pag_actual - 1) . "'> < </button>");
+                    // Muestro un botón a la primera página
+                    print("<button class='boton-pag' type='submit' name='pag_actual' value='0'>1</button>");
+                    // Indico que hay más páginas
+                    print("<p>...</p>");
+                    // Muestro la página actual
+                    print("<button class='boton-pag' type='button'>" . ($pag_actual + 1) . "</button>");
+                    break;
+                    // Caso en el que nos encontramos en una página del medio
+                default:
+                    // Muestro un botón a la página anterior
+                    print("<button type='submit' name='pag_actual' value='" . ($pag_actual - 1) . "'> < </button>");
+                    // Muestro un botón a la primera página
+                    print("<button class='boton-pag' type='submit' name='pag_actual' value='0'>1</button>");
+                    // Indico que hay más páginas
+                    print("<p>...</p>");
+                    // Muestro un botón a la página actual
+                    print("<button class='boton-pag' type='button'>" . ($pag_actual + 1) . "</button>");
+                    // Indico que hay más páginas
+                    print("<p>...</p>");
+                    // Muestro un botón a la última página
+                    print("<button class='boton-pag' type='submit' name='pag_actual' value='" . (count($array_paginas) - 1) . "'>" . (count($array_paginas)) . "</button>");
+                    // Muestro un botón a la siguiente página
+                    print("<button type='submit' name='pag_actual' value='" . ($pag_actual + 1) . "'> > </button>");
+            }
+            print("</form>");
+            ?>
+        </div>
 
         <!-- Boton para añadir los productos -->
         <form action='../view/Ver_juegos.php' method='POST'>

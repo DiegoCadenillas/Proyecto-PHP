@@ -22,8 +22,12 @@ if (isset($_SESSION["user"])) {
     if ($pdo) {
         $email = $_SESSION["user"];
         if (ModelUsuario::es_activo($pdo, $email)) {
+            // Verifico si está puesta la página actual, si no lo está por defecto será la primera del array ([0])
+            $pag_actual = (isset($_POST["pag_actual"])) ? $_POST["pag_actual"] : 0;
+            // Verifico si está puesto el valor de $num_juegos_pagina, si no lo está por defecto le pondremos 4
+            $num_juegos_pagina = (isset($_POST["num_juegos_pagina"])) ? $_POST["num_juegos_pagina"] : 4;
             // Cargar los datos de los juegos
-            $datos_juegos = ModelJuego::get_juegos($pdo);
+            $array_paginas = ModelJuego::get_juegos_pag($pdo, $num_juegos_pagina);
             include("../view/Mostrar_juegos.php");
         } else {
             include("../view/exito.php");

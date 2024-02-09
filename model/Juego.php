@@ -10,11 +10,6 @@ use PDOException;
 
 class Juego
 {
-    public static function get_juego_pag($pdo, $num_pag, $id_juego, $orden, $filtro)
-    {
-        // POR HACER
-    }
-
     // Método que devuelve todas las entradas en la tabla juegos
     public static function get_juegos($pdo)
     {
@@ -30,6 +25,31 @@ class Juego
         }
         // Devuelvo el resultado
         return $result_set;
+    }
+
+    // Método para mostrar por pantalla los juegos paginados
+    public static function get_juegos_pag($pdo, $num_juegos_pagina)
+    {
+        // Recojo los datos de todos los juegos
+        $datos_juegos = Juego::get_juegos($pdo);
+        // Cuento cuántos juegos hay
+        $num_juegos = count($datos_juegos);
+        // Genero un nuevo array que tendrá dentro de sí arrays con los juegos que se mostrarán por cada página
+        $array_paginas = [];
+        $array_pagina = [];
+        // Recorro el array de juegos y cada juego lo añado a la página actual, si está llena la página actual entonces añado la página actual al array de páginas, la reinicializo y le añado el juego actual
+        foreach ($datos_juegos as $juego) {
+            if (count($array_pagina) < $num_juegos_pagina) array_push($array_pagina, $juego);
+            else {
+                array_push($array_paginas, $array_pagina);
+                // Como sigo sin añadir el juego actual lo añado a la página actual
+                $array_pagina = [$juego];
+            }
+        }
+        // Como el bucle puede terminar sin añadir la página actual, reviso si no es vacía y en ese caso la añado
+        if (count($array_pagina) > 0) array_push($array_paginas, $array_pagina);
+        // Devuelvo el array con las páginas
+        return $array_paginas;
     }
 
     // Método que borra la entrada de la tabla juegos con el identificador especificado

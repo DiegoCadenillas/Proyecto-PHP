@@ -24,3 +24,30 @@ h1 {
   font-family: "Medieval";
   border-radius: 10px;
 }
+
+.contenedor-botones {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.contenedor-botones p {
+  display: inline;
+}
+
+#navbarNav, .navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+#navbarNav {
+  max-width: 40%;
+}
+#navbarNav ul {
+  max-width: 50%;
+  display: flex;
+  justify-content: center;
+}

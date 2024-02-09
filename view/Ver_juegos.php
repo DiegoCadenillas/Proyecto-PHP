@@ -23,7 +23,7 @@
 
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Nombre: </span>
-                <input type="text" name="nombre" value="<?= (isset($_POST['nombre']) ? $_POST['nombre'] : '') ?>" class="form-control" placeholder="Nombre Usuario">
+                <input type="text" name="nombre" value="<?= (isset($_POST['nombre']) ? $_POST['nombre'] : '') ?>" class="form-control" placeholder="Nombre de Juego">
             </div>
 
             <div class="input-group mb-3">
